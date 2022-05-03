@@ -1,69 +1,19 @@
-# winsdk_toast
+# -*- coding: utf-8 -*-
+"""
+example for control freak
 
-A simple package for displaying Windows Toast Notification based on [winsdk].
+@Author: modabao
+@Time: 2022/5/3 10:33
+"""
 
-Sometimes, after starting my data processing python script, I may surf the Internet.
-It chokes my happiness that to frequently check whether the script stops,
-or suddenly realize the script has stopped for a long while.
-
-It'll be reassuring that the script can stop with a friendly gesture.
-
-
-## Usage
-
-```python
 from os.path import abspath
+
 from winsdk_toast import Notifier, Toast
 
-path_pic = abspath('./example/resource/python.ico')
+path_pic = abspath('./resource/python.ico')
 
 notifier = Notifier('程序名 applicationId')
 
-# %% minimal example
-toast = Toast()
-toast.add_text('第一行 1st line')
-notifier.show(toast)
-# %% which is equivalent to
-xml = """
-<toast activationType="background">
-    <visual>
-        <binding template="ToastGeneric">
-            <text>第一行 1st line</text>
-        </binding>
-    </visual>
-</toast>
-"""
-toast = Toast(xml)
-notifier.show(toast)
-
-
-# %% simple example
-toast = Toast()
-toast.add_text('第一行 1st line', hint_align='center', hint_style='caption')
-toast.add_text('第二行 2nd line')
-toast.add_text('第三行 3rd line', placement='attribution')
-toast.add_image(path_pic, placement='appLogoOverride')
-toast.add_action('关闭 Close')
-toast.set_audio(silent='true')
-notifier.show(toast)
-# %% which is equivalent to
-xml = f"""
-<toast activationType="background">
-    <visual>
-        <binding template="ToastGeneric">
-            <text hint-style="caption" hint-align="center">第一行 1st line</text>
-            <text>第二行 2nd line</text>
-            <text placement="attribution">第三行 3rd line</text>
-            <image src="{path_pic}" placement="appLogoOverride" />
-        </binding>
-    </visual>
-    <actions>
-        <action content="关闭 Close" arguments="dismiss" activationType="system" />
-    </actions><audio loop="false" silent="true" />
-</toast>
-"""
-toast = Toast(xml)
-notifier.show(toast)
 
 # %% example for control freak
 toast = Toast()
@@ -106,6 +56,7 @@ toast.add_action(
     imageUri=None, hint_inputId=None, hint_buttonStyle=None, hint_toolTip='tip close'
 )
 notifier.show(toast)
+
 # %% which is equivalent to
 xml = f"""
 <toast launch="blah" duration="long" displayTimeStamp="2022-04-01T12:00:00Z" scenario="default" useButtonStyle="false" activationType="background">
@@ -130,34 +81,3 @@ xml = f"""
 """
 toast = Toast(xml)
 notifier.show(toast)
-```
-The corresponding effects are like:
-
-![minimal_example.gif](doc/pic/minimal_example.gif)
-
-![simple_example.gif](doc/pic/simple_example.gif)
-
-![example_for_control_freak.gif](doc/pic/example_for_control_freak.gif)
-
-
-## Todo
-
-- Events and callbacks.
-- Documentation.
-- Costume audio. According to [Microsoft Docs], this might be tricky.
-- ...
-
-[Microsoft Docs]: https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/custom-audio-on-toasts
-
-## else
-
-When I almost make it work, I found another package [windows_toast]
-which has the same dependency and more features.
-Luckily our 'styles' are quite different, and I'm on vacation,
-so I decide to finish it any way.
-
-If you need more features now, please use [windows_toast] instead,
-maybe give this one a try later.
-
-[winsdk]: https://pypi.org/project/winsdk
-[windows_toast]: https://github.com/DatGuy1/Windows-Toasts
