@@ -18,7 +18,7 @@ def set_attributes(element, attributes: dict):
 
 
 class Toast(object):
-    def __init__(self, xml: [str | None] = None):
+    def __init__(self, xml=None):
         self.xml_document = XmlDocument()
         if xml is not None:
             self.xml_document.load_xml(xml)
