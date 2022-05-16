@@ -1,5 +1,7 @@
 # winsdk_toast
 
+[![Documentation Status](https://readthedocs.org/projects/winsdk-toast/badge/?version=latest)](https://winsdk-toast.readthedocs.io/en/latest/?badge=latest)
+
 A simple package for displaying Windows Toast Notification based on [winsdk].
 
 Sometimes, after starting my data processing python script, I may surf the Internet.
@@ -40,7 +42,7 @@ notifier.show(toast)
 
 ![minimal_example.gif](docs/source/Examples/pics/minimal.gif)
 
-More examples and documents are on the way.
+[More examples and documents](https://winsdk-toast.readthedocs.io/en/latest/?badge=latest) are on the way.
 
 
 [winsdk]: https://pypi.org/project/winsdk
