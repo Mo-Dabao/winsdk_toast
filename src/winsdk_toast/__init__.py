@@ -9,4 +9,4 @@ from winsdk_toast.toast import Toast
 from winsdk_toast.notifier import Notifier
 
 __all__ = ['Toast', 'Notifier']
-__version__ = '0.0.2'
+__version__ = '0.1.0'

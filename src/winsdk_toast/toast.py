@@ -22,6 +22,7 @@ class Toast(object):
         self.xml_document = XmlDocument()
         if xml is not None:
             self.xml_document.load_xml(xml)
+        self.input_ids = []
 
     def suit_up(self):
         """Suit up to face notifier
@@ -314,6 +315,7 @@ class Toast(object):
             'placeHolderContent': placeHolderContent
         }
         set_attributes(element_input, attributes)
+        self.input_ids.append(id_)
         return element_input
 
     def add_selection(self, id_=None, content=None, element_parent=None):
